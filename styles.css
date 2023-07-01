@@ -51,9 +51,9 @@
 }
 
 .restart-button-revealed:hover{
-    opacity: 0.6;
     font-style: italic;
     background-color: lightblue;
+    border: 0;
     text-shadow: 3px 3px white, 4px 4px red; 
     box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.5);
 }
