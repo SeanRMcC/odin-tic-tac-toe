@@ -3,7 +3,7 @@ const gameBoard = (function (){
         [' ', ' ', ' '],
         [' ', ' ', ' '],
         [' ', ' ', ' ']
-    ];
+    ];    
 })();
 
 const playerFactory = (name, piece) => {
