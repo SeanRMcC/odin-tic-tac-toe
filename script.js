@@ -90,7 +90,7 @@ cells.forEach(cell => {
     cell.addEventListener("click", () => {
         const row = cell.dataset.row;
         const col = cell.dataset.col;
-        if(!game.won && gameBoard.canPlace(row, col)){
+        if(!game.over && gameBoard.canPlace(row, col)){
             console.log(game);
             cell.textContent = game.currPiece;
             gameBoard.place(row, col, game.currPiece);
