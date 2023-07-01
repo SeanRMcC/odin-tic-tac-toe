@@ -3,7 +3,10 @@ const gameBoard = (function (){
         [' ', ' ', ' '],
         [' ', ' ', ' '],
         [' ', ' ', ' ']
-    ];    
+    ]; 
+    
+    return {board};
+
 })();
 
 const playerFactory = (name, piece) => {
@@ -11,5 +14,5 @@ const playerFactory = (name, piece) => {
 };
 
 const game = (function () {
-
+    return 1;
 })();
