@@ -1,3 +1,8 @@
+h1{
+    text-align: center;
+    font-size: 5rem;
+}
+
 .game{
     display: flex;
     justify-content: center;
@@ -33,4 +38,8 @@
 .restart-button-revealed{
     display: block;
     margin: 0 auto;
+}
+
+.player{
+    font-size: 4rem;
 }
