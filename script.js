@@ -56,7 +56,15 @@ const gameBoard = (function (){
         return true;
     };
 
-    return {board, canPlace, place, isWinnerFor, isTie};
+    const clear = () => {
+        for(let r = 0; r < board.length; r++){
+            for(let c = 0; c < board[r].length; c++){
+                board[r][c] = ' ';
+            }
+        }
+    };
+
+    return {board, canPlace, place, isWinnerFor, isTie, clear};
 
 })();
 
@@ -104,4 +112,21 @@ cells.forEach(cell => {
             }
         }
     });
+});
+
+function clearGrid(){
+    cells.forEach(cell => {
+        cell.textContent = '';
+    });
+}
+
+restartButton.addEventListener("click", () => {
+    restartButton.classList.remove("restart-button-revealed");
+    gameBoard.clear();
+    winnerDiv.textContent = '';
+    game.over = false;
+    game.currPiece = 'X';
+    p1Div.classList.add("turn");
+    p2Div.classList.remove("turn");
+    clearGrid();
 });
