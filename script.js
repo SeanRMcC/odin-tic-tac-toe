@@ -45,12 +45,23 @@ const gameBoard = (function (){
         return verticalWin(piece) || horizontalWin(piece) || diagonalWin(piece);
     };
 
-    return {board, canPlace, place, isWinnerFor};
+    const isTie = () => {
+        for(let r = 0; r < board.length; r++){
+            for(let c = 0; c < board[r].length; c++){
+                if(board[r][c] === ' '){
+                    return false;
+                }
+            }
+        }
+        return true;
+    };
+
+    return {board, canPlace, place, isWinnerFor, isTie};
 
 })();
 
 const game = (function () {
-    let won = false;
+    let over = false;
     let currPiece = 'X';
     const togglePiece = () => {
         if(currPiece === 'X'){
@@ -64,7 +75,7 @@ const game = (function () {
         }
     };
 
-    return {won, currPiece, togglePiece};
+    return {over, currPiece, togglePiece};
 })();
 
 cells.forEach(cell => {
@@ -76,9 +87,13 @@ cells.forEach(cell => {
             cell.textContent = game.currPiece;
             gameBoard.place(row, col, game.currPiece);
             if(gameBoard.isWinnerFor(game.currPiece)){
-                game.won = true;
+                game.over = true;
                 restartButton.classList.add("restart-button-revealed");
                 winnerDiv.textContent = `Winner is ${game.currPiece}`;
+            }else if(gameBoard.isTie()){
+                game.over = true;
+                restartButton.classList.add("restart-button-revealed");
+                winnerDiv.textContent = "Its a tie!";
             }else{
                 game.togglePiece();
                 if(game.currPiece === 'X'){
