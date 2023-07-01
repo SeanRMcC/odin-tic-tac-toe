@@ -53,3 +53,8 @@
 .turn{
     background-color: lightblue;
 }
+
+.winner{
+    text-align: center;
+    font-size: 3rem;
+}

@@ -1,6 +1,8 @@
 const cells = document.querySelectorAll(".cell");
 const p1Div = document.querySelector("#first-player");
 const p2Div = document.querySelector("#second-player");
+const restartButton = document.querySelector(".restart-button");
+const winnerDiv = document.querySelector(".winner");
 
 const gameBoard = (function (){
     const board = [
@@ -47,10 +49,44 @@ const gameBoard = (function (){
 
 })();
 
-const playerFactory = (name, piece) => {
-    return {name, piece};
-};
-
 const game = (function () {
-    return 1;
+    let won = false;
+    let currPiece = 'X';
+    const togglePiece = () => {
+        if(currPiece === 'X'){
+            currPiece = 'O';
+            p1Div.classList.remove("turn");
+            p2Div.classList.add("turn");
+        }else{
+            currPiece = 'X';
+            p2Div.classList.remove("turn");
+            p1Div.classList.add("turn");
+        }
+    };
+
+    return {won, currPiece, togglePiece};
 })();
+
+cells.forEach(cell => {
+    cell.addEventListener("click", () => {
+        const row = cell.dataset.row;
+        const col = cell.dataset.col;
+        if(!game.won && gameBoard.canPlace(row, col)){
+            console.log(game);
+            cell.textContent = game.currPiece;
+            gameBoard.place(row, col, game.currPiece);
+            if(gameBoard.isWinnerFor(game.currPiece)){
+                game.won = true;
+                restartButton.classList.add("restart-button-revealed");
+                winnerDiv.textContent = `Winner is ${game.currPiece}`;
+            }else{
+                game.togglePiece();
+                if(game.currPiece === 'X'){
+                    game.currPiece = 'O';
+                }else{
+                    game.currPiece = 'X';
+                }
+            }
+        }
+    });
+});
