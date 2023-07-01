@@ -43,6 +43,9 @@
 .restart-button-revealed{
     display: block;
     margin: 0 auto;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    border-radius: 8px;
 }
 
 .player{

@@ -97,7 +97,7 @@ cells.forEach(cell => {
             if(gameBoard.isWinnerFor(game.currPiece)){
                 game.over = true;
                 restartButton.classList.add("restart-button-revealed");
-                winnerDiv.textContent = `Winner is ${game.currPiece}`;
+                winnerDiv.textContent = `Winner is ${game.currPiece}!`;
             }else if(gameBoard.isTie()){
                 game.over = true;
                 restartButton.classList.add("restart-button-revealed");
