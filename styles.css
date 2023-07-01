@@ -1,0 +1,36 @@
+.game{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.board{
+    display: grid;
+    width: 500px;
+    height: 500px;
+    background-color: black;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.cell{
+    background-color: white;
+    display: grid;
+    place-items: center;
+    font-size: 8rem;
+}
+
+.cell:hover{
+    background-color: gray;
+}
+
+.restart-button{
+    display: none;
+}
+
+.restart-button-revealed{
+    display: block;
+    margin: 0 auto;
+}
